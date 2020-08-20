@@ -9,28 +9,129 @@ Walk through the linked list code in the curriculum and understand it well. Then
 Write a function `main`. Within the function, using the linked list class above, create a linked list with the name `SLL` and add the following items to your linked list: `Apollo`, `Boomer`, `Helo`, `Husker`, `Starbuck`.
 
 - Add `Tauhida` to the list.
+sure
 
 - Remove `squirrel` from the list.
+.... (눈_눈) sure....
+```
+===========>>>>>>>>> Item not found <<<<<<<<===========
+LinkedList {
+  head: _Node {
+    value: 'Tauhida',
+    next: _Node { value: 'Starbuck', next: [_Node] }
+  }
+}
+```
 
 - Implement a function called `insertBefore()` in the 
 class that inserts a new node before a given node 
 containing a key.
 
+```
+ insertBefore(key,item){
+
+    if(typeof key === 'object'){
+      key = key.value;
+    }
+    
+    if(this.head.value === key){
+      this.insertFirst(key);
+    }
+
+    if(this.head === null){
+      this.insertFirst(item);
+    }else{
+      let currNode = this.find(key);
+  
+      if(currNode === null ){
+        return null;
+      }
+  
+      const newItem = new _Node(item, currNode);
+      let before = this.head;
+      while(currNode !== before.next){
+        if(before === null){
+          return null;
+        }
+        before = before.next;
+      }
+      before.next = newItem;
+      console.log(`${newItem.value} was inserted before ${before.value} :3 \n`)
+      return `${newItem.value} was inserted before ${before.value} :3 \n`;
+    }
+  }
+```
+
 - Implement a function called `insertAfter()` in the class that inserts a new node after a node containing the key.
 
+```
+  insertAfter(key, item){
+
+    if(this.head === null){
+      this.insertFirst(item);
+    }
+    else{
+      //first find the item we want to insert after
+      let currNode = this.find(key);
+      /* set a marker to count to, that it's val can be that of
+       of the val of the new item's next */
+      let after = this.head;
+      //run loop
+      while(after !== currNode.next){
+        if (after === null ){
+          return null;
+        }
+        after = after.next;
+      }
+      /*making new item with next content being that of 
+      the key item */ 
+      const newItem = new _Node(item,after);
+      //reset curr items next val to be that of new time 
+      currNode.next = newItem ;
+      console.log(`${newItem.value} was inserted after ${currNode.value} \n`);
+      return `${newItem.value} was inserted after ${currNode.value}`;
+    }
+  }
+```
+
 - Implement a function called `insertAt()` that inserts an item at a specific position in the linked list.
+
+```
+  insertAt(index, item){
+    console.log('called');
+    if(this.head === null){
+      this.insertFirst(item);
+    }else{
+
+      let nodeByIndex = this.head;
+      let i = 0;
+      while(index !== i){
+        if(nodeByIndex === null){
+          return null;
+        }
+        nodeByIndex = nodeByIndex.next;
+        i++;
+      }
+      this.insertBefore(nodeByIndex,item);
+    }
+  }
+```
 
 - Add `Athena` before `Boomer` using your `insertBefore()` 
 function.
 
-- Add Hotdog after `Helo` using the `insertAfter()` method.
+logged ` Athena was inserted before Boomer :3` L.74 of linkedList.js 
+
+- Add `Hotdog` after `Helo` using the `insertAfter()` method.
+
+logged `Hotdog was inserted after Helo` l.101 of linkedList.js
 
 - Using the `insertAt()` method insert `Kat` in the 3rd 
 position of the list.
 
+logged `Kat was inserted before Husker :3` l.74 of linkedList.js
+
 - Remove `Tauhida` from the list.
-
-
 
 
 

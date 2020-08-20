@@ -1,10 +1,8 @@
 /* eslint-disable no-console */
 const LinkedList = require('../../linkedList/linkedList');
 const STORE = require('../store/store');
+const {arrayContent , names, log} = STORE;
 
-const {arrayContent , names} = STORE;
-
-const log = console.log;
 
 const main = (data) => {
 
@@ -29,7 +27,7 @@ const addTo = (data) =>{
   return SSL;
 };
 
-log(addTo(names.tauhida));
+// log(addTo(names.tauhida));
 
 const remove = (itemToRemove) =>{
   const SSL = addTo(names.tauhida);
@@ -38,4 +36,53 @@ const remove = (itemToRemove) =>{
 
   return SSL;
 };
+
+//log(remove(names.squirrel));
+
+const insertBefore = (find, item) =>{
+  const SSL = addTo(names.tauhida);
+
+  SSL.insertBefore(find,item);
+  
+  return SSL; 
+
+};
+
+// console.table(insertBefore('Boomer',names.athena));
+
+const insertAfter = (find,item) =>{
+  const SSL = insertBefore('Boomer',names.athena);
+
+  SSL.insertAfter(find,item);
+
+  return SSL;
+};
+
+// log(insertAfter('Helo',names.hotdog));
+
+const insertA= (index,item) =>{
+
+  const SSL = insertAfter('Helo',names.hotdog);
+
+  SSL.insertAt(index,item);
+
+  return SSL;
+    
+};
+
+// log(insertA(2,names.kat));
+
+
+const freeFunctions = () =>{
+  const SSL = insertA(2,names.kat);
+
+  SSL.free = STORE.display;
+
+  log(SSL.free());
+    
+
+};
+
+freeFunctions();
+
 
