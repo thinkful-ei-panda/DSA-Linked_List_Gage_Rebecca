@@ -1,12 +1,13 @@
 ### part 1 : Create a linked list class
 Walk through the linked list code in the curriculum and understand it well. Then write a linked list class and its core functions (`insertFirst`, `insertLast`, `remove`, `find`) from scratch.
+
+
 - done see `./linkedList/linkedList.js`
-
-
 
  ### part 2: Create a singly linked list
 
 Write a function `main`. Within the function, using the linked list class above, create a linked list with the name `SLL` and add the following items to your linked list: `Apollo`, `Boomer`, `Helo`, `Husker`, `Starbuck`.
+
 - Add `Tauhida` to the list.
 
 - Remove `squirrel` from the list.
