@@ -1,7 +1,10 @@
+/* eslint-disable no-console */
 const LinkedList = require('../../linkedList/linkedList');
 const STORE = require('../store/store');
 
 const {arrayContent , names} = STORE;
+
+const log = console.log;
 
 const main = (data) => {
 
@@ -16,10 +19,7 @@ const main = (data) => {
 
 };
 
-
-
-// console.log(main(arrayContent));
-
+// log(main(arrayContent));
 
 const addTo = (data) =>{
   const SSL = main(arrayContent);
@@ -29,4 +29,13 @@ const addTo = (data) =>{
   return SSL;
 };
 
-console.log(addTo(names.tauhida));
+log(addTo(names.tauhida));
+
+const remove = (itemToRemove) =>{
+  const SSL = addTo(names.tauhida);
+
+  SSL.remove(itemToRemove);
+
+  return SSL;
+};
+
