@@ -121,7 +121,8 @@ const getLast = () => {
 const reverseList = () =>{
   const SSL = insertAfter('Helo', names.hotdog);
 
-  return reverse(SSL);
+  SSL.head = reverse(SSL);
+  return SSL.head;
 };
 
 log(reverseList());
