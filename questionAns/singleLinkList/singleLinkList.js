@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 const LinkedList = require('../../linkedList/linkedList');
-const {STORE, reverse, findThird } = require('../store/store');
+const {STORE, reverse, findThird,findMiddle } = require('../store/store');
 const {arrayContent , names, log} = STORE;
 
 
@@ -132,4 +132,11 @@ const find3rd = () => {
   return findThird(SSL);
 };
 
-log(find3rd());
+// log(find3rd());
+
+const findMiddleOfList = () => {
+  const SSL = insertAfter('Helo', names.hotdog);
+  return findMiddle(SSL);
+};
+
+log(findMiddleOfList());

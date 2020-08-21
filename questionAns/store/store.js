@@ -109,8 +109,28 @@ const findThird = (lis) => {
     i++;
   }
   lis.head = head;
-  console.log(head);
   return lis;
 };
 
-module.exports = {STORE, reverse, findThird}; 
+const findMiddle = (lis) => {
+  if(lis.head == null){
+    throw new Error('no content');
+  }
+  let size = STORE.size(lis);
+  let half = Math.floor(size/2);
+  let {head} = lis;
+  while(i < (size - 1)){
+    head = head.next;
+    i++;
+  }
+  lis.head = head; 
+  return lis;
+
+};
+
+module.exports = {
+  STORE,
+  reverse,
+  findThird,
+  findMiddle
+}; 
