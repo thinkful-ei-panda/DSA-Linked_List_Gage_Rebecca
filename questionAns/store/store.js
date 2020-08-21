@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 const STORE = {
   arrayContent : [
     'Apollo',
@@ -16,25 +17,26 @@ const STORE = {
 
   log : console.log,
 
-  display : () => {
-    if(this.head === null){
+  display : (lis) => {
+    if(lis.head === null){
       return 'no content in storage';
     }
     const nameList ={
       names : [],
     };
-    let grabbyBoi = this.head;
+    let grabbyBoi = lis.head;
     while(grabbyBoi !== null){
-      nameList.names.Push(grabbyBoi.value);
+      nameList.names.push(grabbyBoi.value);
+      grabbyBoi = grabbyBoi.next;
     } 
-    return console.log(...nameList.names);
+    return nameList.names;
   },
 
-  size : ()=>{
-    if(this.head === null){
+  size : (lis)=>{
+    if(lis.head === null){
       return 0;
     }
-    let counter = this.head;
+    let counter = lis.head;
     let i = 0;
     while(counter !== null){
       counter = counter.next;
@@ -43,12 +45,38 @@ const STORE = {
     return i;
   },
 
-  isEmpty : () => {
-    if(this.head === null){
+  isEmpty : (lis) => {
+    if(lis.head === null){
       return true;
     }else{
       return false;
     }
+  },
+  findPrevious : (lis, lookUp) =>{
+    if(lis.head === null ){
+      return 'no content';
+    }
+    let content = lis.head;
+    while(content.next.value !== lookUp){
+      if(content.next == null)
+        return 'nothing can be found';
+      content = content.next;
+    }
+    return content;
+  },
+  findLast : (lis) =>{
+    if(lis.head === null)
+      return 'no content in list';
+
+    let content = lis.head;
+    while(content.next !== null){
+
+      content = content.next;
+    }
+    return content;
+  },
+  reverse : (lis) =>{
+
   }
 
 };

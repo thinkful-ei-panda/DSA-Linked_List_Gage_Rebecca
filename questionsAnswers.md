@@ -139,10 +139,75 @@ logged `Kat was inserted before Husker :3` l.74 of linkedList.js
 Implement the following functions that operate on your linked list class. Note that these should be free functions instead of methods of the linked list class, so implement them __**outside**__ the linked list class. Test each function using the list created in exercise 1.
 
 - `display`: displays the linked list
+
+```
+  display : (head) => {
+    if(head === null){
+      return 'no content in storage';
+    }
+    const nameList ={
+      names : [],
+    };
+    let grabbyBoi = head;
+    while(grabbyBoi !== null){
+      nameList.names.push(grabbyBoi.value);
+      grabbyBoi = grabbyBoi.next;
+    } 
+    return nameList.names;
+  },
+```
+
 - `size`: returns the size of the linked list
+
+```
+  size : (head)=>{
+    if(head === null){
+      return 0;
+    }
+    let counter = head;
+    let i = 0;
+    while(counter !== null){
+      counter = counter.next;
+      i++;
+    }
+    return i;
+  },
+```
+
 - `isEmpty`: finds if the list is empty or not (without using the `size()` function)
+
+```
+  isEmpty : (head) => {
+    if(head === null){
+      return true;
+    }else{
+      return false;
+    }
+  }
+```
+
 - `findPrevious`: finds the node before the item you are looking for
+
+```
+  findPrevious : (head, lookUp) =>{
+    if(head === null ){
+      return 'no content';
+    }
+    let content = head;
+    while(content.next.value !== lookUp){
+      if(content.next == null)
+        return 'nothing can be found';
+      content = content.next;
+    }
+    return content;
+  }
+```
+
 - `findLast`: returns the last node in the linked list
+
+```
+
+```
 
 
 

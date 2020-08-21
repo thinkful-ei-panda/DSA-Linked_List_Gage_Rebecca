@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 const LinkedList = require('../../linkedList/linkedList');
 const STORE = require('../store/store');
+const { isEmpty } = require('../store/store');
 const {arrayContent , names, log} = STORE;
 
 
@@ -73,16 +74,44 @@ const insertA= (index,item) =>{
 // log(insertA(2,names.kat));
 
 
-const freeFunctions = () =>{
-  const SSL = insertA(2,names.kat);
+const display =()=>{
+  const SSL = insertAfter('Helo',names.hotdog);
 
-  SSL.free = STORE.display;
+  return STORE.display(SSL);
+};
 
-  log(SSL.free());
-    
+log(display());
+
+const size =() =>{
+  const SSL = insertAfter('Helo',names.hotdog);
+
+  return STORE.size(SSL);
 
 };
 
-freeFunctions();
+log(size());
 
+const hasContent = () => {
+  const SSL = insertAfter('Helo',names.hotdog);
 
+  return STORE.isEmpty(SSL);
+
+};
+
+log(hasContent());
+
+const getBefore =()=>{
+  const SSL = insertAfter('Helo',names.hotdog);
+
+  return STORE.findPrevious(SSL,'Helo');
+};
+
+log(getBefore());
+
+const getLast = () => {
+  const SSL = insertAfter('Helo', names.hotdog);
+
+  return STORE.findLast(SSL);
+};
+
+log(getLast());

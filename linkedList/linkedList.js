@@ -64,15 +64,14 @@ class LinkedList {
   
       const newItem = new _Node(item, currNode);
       let before = this.head;
-      while(currNode !== before){
+      while(currNode !== before.next){
         if(before === null){
           return null;
         }
         before = before.next;
       }
       before.next = newItem;
-      console.log(`${newItem.value} was inserted before ${before.value} :3 \n`)
-      return `${newItem.value} was inserted before ${before.value} :3 \n`;
+      return;
     }
   }
   insertAfter(key, item){
@@ -98,12 +97,10 @@ class LinkedList {
       const newItem = new _Node(item,after);
       //reset curr items next val to be that of new time 
       currNode.next = newItem ;
-      console.log(`${newItem.value} was inserted after ${currNode.value} \n`);
-      return `${newItem.value} was inserted after ${currNode.value}`;
+      return ;
     }
   }
   insertAt(index, item){
-    console.log('called');
     if(this.head === null){
       this.insertFirst(item);
     }else{
