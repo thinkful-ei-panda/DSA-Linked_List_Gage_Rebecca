@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 const LinkedList = require('../../linkedList/linkedList');
-const {STORE, reverse} = require('../store/store');
+const {STORE, reverse, reverseList2} = require('../store/store');
 const {arrayContent , names, log} = STORE;
 
 

@@ -80,13 +80,13 @@ const STORE = {
 
 const reverse = (lis, prev=null,next=null) =>{
   STORE.log('*');
-  if(lis.head == null){
+  if(lis.head == null && !prev){
     return 'the list must be empty. or you sent the wrong thing';
   }
   let { head } = lis;
   
-  if(head.next == null){
-    return {head};
+  if(head == null){
+    return {prev};
   }
   next = head.next;
   head.next = prev;
@@ -97,5 +97,4 @@ const reverse = (lis, prev=null,next=null) =>{
   return reverse(pack,prev,next);
 };
 
-
-module.exports = {STORE, reverse}; 
+module.exports = {STORE, reverse,}; 
