@@ -76,6 +76,21 @@ const STORE = {
     return content;
   },
   reverse : (lis) =>{
+    if(lis.head == null){
+      return 'the list must be empty. or you sent the wrong thing';
+    }
+
+    let { head } = lis;
+    if(head.next == null){
+      return head;
+    }
+
+    head.next = head;
+    return this.reverse(head);
+
+
+    
+
 
   }
 

@@ -115,3 +115,12 @@ const getLast = () => {
 };
 
 log(getLast());
+
+
+const reverseList = () =>{
+  const SSL = insertAfter('Helo', names.hotdog);
+
+  return STORE.reverse(SSL);
+};
+
+log(reverseList());
