@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 const LinkedList = require('../../linkedList/linkedList');
-const {STORE, reverse, reverseList2} = require('../store/store');
+const {STORE, reverse, findThird } = require('../store/store');
 const {arrayContent , names, log} = STORE;
 
 
@@ -125,4 +125,11 @@ const reverseList = () =>{
   return SSL;
 };
 
-log(reverseList());
+// log(reverseList());
+
+const find3rd = () => {
+  const SSL = insertAfter('Helo', names.hotdog);
+  return findThird(SSL);
+};
+
+log(find3rd());

@@ -86,7 +86,7 @@ const reverse = (lis, prev=null,next=null) =>{
   let { head } = lis;
   
   if(head == null){
-    return {prev};
+    return { head : prev};
   }
   next = head.next;
   head.next = prev;
@@ -97,4 +97,20 @@ const reverse = (lis, prev=null,next=null) =>{
   return reverse(pack,prev,next);
 };
 
-module.exports = {STORE, reverse,}; 
+const findThird = (lis) => {
+  if(lis.head == null){
+    throw new Error('no content');
+  }
+  let size = STORE.size(lis);
+  let i = 0;
+  let {head} = lis;
+  while(i < (size - 4)){
+    head = head.next;
+    i++;
+  }
+  lis.head = head;
+  console.log(head);
+  return lis;
+};
+
+module.exports = {STORE, reverse, findThird}; 

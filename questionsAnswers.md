@@ -292,7 +292,7 @@ const reverse = (lis, prev=null,next=null) =>{
   let { head } = lis;
   
   if(head.next == null){
-    return {head};
+    return {head : prev};
   }
   next = head.next;
   head.next = prev;
