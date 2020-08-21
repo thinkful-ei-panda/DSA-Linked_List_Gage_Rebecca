@@ -75,25 +75,27 @@ const STORE = {
     }
     return content;
   },
-  reverse : (lis) =>{
-    if(lis.head == null){
-      return 'the list must be empty. or you sent the wrong thing';
-    }
-
-    let { head } = lis;
-    if(head.next == null){
-      return head;
-    }
-
-    head.next = head;
-    return this.reverse(head);
-
-
-    
-
-
-  }
 
 };
 
-module.exports = STORE; 
+const reverse = (lis, prev=null,next=null) =>{
+  STORE.log('*');
+  if(lis.head == null){
+    return 'the list must be empty. or you sent the wrong thing';
+  }
+  let { head } = lis;
+  
+  if(head.next == null){
+    return {head};
+  }
+  next = head.next;
+  head.next = prev;
+  prev = head;
+  head = next;
+
+  let pack = {head};
+  return reverse(pack,prev,next);
+};
+
+
+module.exports = {STORE, reverse}; 

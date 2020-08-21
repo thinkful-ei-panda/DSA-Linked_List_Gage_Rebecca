@@ -206,8 +206,23 @@ Implement the following functions that operate on your linked list class. Note t
 - `findLast`: returns the last node in the linked list
 
 ```
+findLast : (obj) =>{
+    if(obj.head === null)
+      return 'no content in list';
+
+    let content = obj.head;
+    while(content.next !== null){
+
+      content = content.next;
+    }
+    return content;
+  }
+
+};
 
 ```
+
+all in `./questionAns/store/store.js`
 
 
 
@@ -231,10 +246,63 @@ function WhatDoesThisProgramDo(lst) {
     }
 }
 ```
+being useless lol, it doesn't even return anything.
+talk about a function that takes the piss...
+but i guess i should give it a "*detailed look over*"
+
+```
+/*calling function*/
+function WhatDoesThisProgramDo(lst) {
+    /* getting head content form the imported list */
+    let current = lst.head;
+    /* run loop till length end */
+    while (current !== null) {
+        /* create list copy . . . */
+        let newNode = current;
+        /* run till last item in the list is hit*/
+        while (newNode.next !== null) {
+                /*if the value of the next item is == to value of the list of the outer loop ...*/
+            if (newNode.next.value === current.value) {
+                /*list item skips that item in the list becomething the ...next . next item in the list (like i +=2)*/
+                newNode.next = newNode.next.next;
+            }
+            /*else become the next item (almost like i++)*/
+            else {
+                newNode = newNode.next;
+            }
+        }
+        /*... then i++ and do it over again ... */
+        current = current.next;
+    }
+}
+```
+`O(n^2)` because it run x amount of time x amount of times (x*x)
+
 
 ### part 5: Reverse a list
 Write an algorithm to reverse a linked list. The time complexity of your algorithm should be linear (O(n)). For this exercise, notice we are not asking you just to print the linked list in reverse or use another linked list to store the value in reverse order. Your program should reverse the direction of a given singly linked list. In other words, all pointers should point backward. BONUS: Solve this problem using both recursive and iterative algorithms.
 
+
+```
+const reverse = (lis, prev=null,next=null) =>{
+  STORE.log('*');
+  if(lis.head == null){
+    return 'the list must be empty. or you sent the wrong thing';
+  }
+  let { head } = lis;
+  
+  if(head.next == null){
+    return {head};
+  }
+  next = head.next;
+  head.next = prev;
+  prev = head;
+  head = next;
+
+  let pack = {head};
+  return reverse(pack,prev,next);
+};
+```
 
 
 ### part 6: 3rd from the end

@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
 const LinkedList = require('../../linkedList/linkedList');
-const STORE = require('../store/store');
-const { isEmpty } = require('../store/store');
+const {STORE, reverse} = require('../store/store');
 const {arrayContent , names, log} = STORE;
 
 
@@ -80,7 +79,7 @@ const display =()=>{
   return STORE.display(SSL);
 };
 
-log(display());
+//log(display());
 
 const size =() =>{
   const SSL = insertAfter('Helo',names.hotdog);
@@ -89,7 +88,7 @@ const size =() =>{
 
 };
 
-log(size());
+//log(size());
 
 const hasContent = () => {
   const SSL = insertAfter('Helo',names.hotdog);
@@ -98,7 +97,7 @@ const hasContent = () => {
 
 };
 
-log(hasContent());
+//log(hasContent());
 
 const getBefore =()=>{
   const SSL = insertAfter('Helo',names.hotdog);
@@ -106,7 +105,7 @@ const getBefore =()=>{
   return STORE.findPrevious(SSL,'Helo');
 };
 
-log(getBefore());
+//log(getBefore());
 
 const getLast = () => {
   const SSL = insertAfter('Helo', names.hotdog);
@@ -114,13 +113,15 @@ const getLast = () => {
   return STORE.findLast(SSL);
 };
 
-log(getLast());
+//log(getLast());
+
+
 
 
 const reverseList = () =>{
   const SSL = insertAfter('Helo', names.hotdog);
 
-  return STORE.reverse(SSL);
+  return reverse(SSL);
 };
 
 log(reverseList());
