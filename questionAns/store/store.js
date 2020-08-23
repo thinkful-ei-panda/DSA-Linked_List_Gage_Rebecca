@@ -14,7 +14,13 @@ const STORE = {
     kat : 'Kat',
     hotdog : 'Hotdog',
   },
-
+  ddlContent : [
+    'Aquaria',
+    'Caprica',
+    'Gemenon',
+    'Picon',
+    'Sagittaron'
+  ],
   log : console.log,
 
   display : (lis) => {
@@ -75,6 +81,18 @@ const STORE = {
     }
     return content;
   },
+  isCycle : (lis) => {
+    if(lis.head === null)throw new Error('Invalid list entered into "isCycle"');
+
+    let check = lis.head , temp = lis.head ; 
+
+    while (temp.next !== null){
+      if(check.value == temp.next.value && check.next == temp.next.next)return true;
+
+      temp = temp.next;
+    }
+    return false;
+  },
 
 };
 
@@ -119,13 +137,13 @@ const findMiddle = (lis) => {
   let size = STORE.size(lis);
   let half = Math.floor(size/2);
   let {head} = lis;
-  while(i < (size - 1)){
+  let i = 0;
+  while(i < (half - 1)){
     head = head.next;
     i++;
   }
   lis.head = head; 
   return lis;
-
 };
 
 module.exports = {

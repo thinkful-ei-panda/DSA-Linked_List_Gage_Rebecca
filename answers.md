@@ -286,13 +286,13 @@ Write an algorithm to reverse a linked list. The time complexity of your algorit
 ```
 const reverse = (lis, prev=null,next=null) =>{
   STORE.log('*');
-  if(lis.head == null){
+  if(lis.head == null && !prev){
     return 'the list must be empty. or you sent the wrong thing';
   }
   let { head } = lis;
   
-  if(head.next == null){
-    return {head : prev};
+  if(head == null){
+    return { head : prev};
   }
   next = head.next;
   head.next = prev;
@@ -309,6 +309,23 @@ const reverse = (lis, prev=null,next=null) =>{
 Write an algorithm to find the 3rd element from the end of a linked list.
 __***Note***__ You may be tempted to add a length property to your linked list class. The length property is not a typical property of linked list, therefore don't make any modification to the linked list class that is provided to you.
 
+```
+const findThird = (lis) => {
+  if(lis.head == null){
+    throw new Error('no content');
+  }
+  let size = STORE.size(lis);
+  let i = 0;
+  let {head} = lis;
+  while(i < (size - 4)){
+    head = head.next;
+    i++;
+  }
+  lis.head = head;
+  return lis;
+};
+```
+
 
 
 ### part 7: Middle of a list
@@ -316,9 +333,44 @@ __***Note***__ You may be tempted to add a length property to your linked list c
 Write an algorithm to find the middle element of a linked list. 
 __***Note***__ You may be tempted to add a length property to your linked list class. The length property is not a typical property of linked list, therefore don't make any modification to the linked list class that is provided to you. Also, finding the size of the linked list using the `size()` function and dividing it by half will not find the correct middle of the linked list. So, don't use either of these approaches.
 
+```
+const findMiddle = (lis) => {
+  if(lis.head == null){
+    throw new Error('no content');
+  }
+  let size = STORE.size(lis);
+  let half = Math.floor(size/2);
+  let {head} = lis;
+  let i = 0;
+  while(i < (half - 1)){
+    head = head.next;
+    i++;
+  }
+  lis.head = head; 
+  return lis;
+
+};
+```
+
 ### part 8: Cycle in a list
 
 Write an algorithm to find whether a linked list has a cycle (i.e., whether a node in the list has its `next` value pointing to an earlier node in the list). For this exercise, create a linked list with the name `CycleList`. Be sure to insert nodes in the list so that it has a cycle. Then test your program with a `cycleList` function.
+
+
+```
+  isCycle : (lis) => {
+    if(lis.head === null)throw new Error('Invalid list entered into "isCycle"');
+
+    let check = lis.head , temp = lis.head ; 
+
+    while (temp.next !== null){
+      if(check.value == temp.next.value && check.next == temp.next.next)return true;
+
+      temp = temp.next;
+    }
+    return false;
+  },
+```
 
 ### part 9: Doubly linked list
 
@@ -327,8 +379,34 @@ Implement a doubly linked list. The primary functions of the doubly linked list 
 - Add `Tauron` to the list
 - Remove `Picon` from the list
 
+see `./linkList/doublyLinkedList.js/`
 
 
 ### part 10: Reverse a DLL
 
-Given the doubly linked list above, write a program that reverses the doubly linked list. How is this implementation different than reversing the singly linked list?
+Given the doubly linked list above,
+write a program that reverses the doubly linked list.
+How is this implementation different than reversing the singly linked list?
+
+it's basicly this.head = this.tail.... with some steps.
+
+```
+  reverse(){
+    if(!this.head) throw new Error('eh?');
+
+    let newTail = this.head,
+      newHead = null; 
+
+    while(newTail !== null){
+      newHead = newTail.previous;
+      newTail.previous = newTail.next;
+      newTail.next = newHead;
+      newTail = newTail.previous; 
+    }
+    if(newHead !== null){
+      this.head = newHead.previous;
+    }
+  }
+}
+```
+

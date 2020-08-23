@@ -139,4 +139,15 @@ const findMiddleOfList = () => {
   return findMiddle(SSL);
 };
 
-log(findMiddleOfList());
+// log(findMiddleOfList());
+
+const IfCyc = () =>{
+  const SSL = insertAfter('Helo', names.hotdog);
+  // SSL.head.next.next.next.next.next.next = SSL.head;
+  return STORE.isCycle(SSL);
+};
+
+log(IfCyc());
+
+
+
